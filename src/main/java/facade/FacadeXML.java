@@ -1,15 +1,14 @@
 package facade;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import structure.Structure;
 import structure.Structure.Node;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +32,21 @@ public class FacadeXML implements Facade {
 
     @Override
     public List<Node> readTree(String fileName) {
-        return null;
+        File xmlFile = new File(fileName);
+        List<Node> list = new ArrayList<>();
+
+        JAXBContext jaxbContext;
+        try
+        {
+            jaxbContext = JAXBContext.newInstance(Node.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            Node node = (Node) jaxbUnmarshaller.unmarshal(xmlFile);
+            list.add(node);
+        }
+        catch (JAXBException e)
+        {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

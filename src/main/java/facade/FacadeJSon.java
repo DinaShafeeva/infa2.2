@@ -36,9 +36,9 @@ public class FacadeJSon implements Facade {
             JsonNode jsonNodeParser = mapper.readTree(reader);
             List<Node> list = new ArrayList<>();
             for (JsonNode jsonNode1 : jsonNodeParser){
-             //   Node node = mapper.readValue(jsonNode1, Node.class);
-             //   list.add(node);
-             //   System.out.println(node.getName());
+                Node node = mapper.readValue(jsonNode1, Node.class);
+                list.add(node);
+                System.out.println(node.getName());
             }
             return list;
 
