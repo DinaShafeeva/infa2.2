@@ -8,6 +8,7 @@ import structure.Structure.Node;
 import structure.Tree;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
@@ -72,5 +73,6 @@ public class Main {
 //        for (Node n : facadeClass.readTree(FacadeClass.Type.XML, "json.txt")){
 //            System.out.println(n.getName() + ",");
 //        }
+
     }
 }
